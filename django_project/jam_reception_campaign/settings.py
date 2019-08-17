@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'data',
         'USER': 'jam_user',
         'PASSWORD': 'jam_password',
-        'HOST': '0.0.0.0',  # 10.6.82.23
+        'HOST': '10.6.82.23',  # 10.6.82.23
         'PORT': '15432',  # 15432
     }
 }
