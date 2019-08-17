@@ -9,7 +9,16 @@ def index(request):
 
 def new_application(request):
     return render_to_response('app/application_form.html', {
-        "title": "Подача заявления"
+        "title": "Подача заявления",
+        "fields": [
+            'Гражданство',
+            'Номер паспорта',
+            'Личный номер',
+            'Дата выдачи',
+            'Фотография'
+        ],
+        "subjects": [['Математика', 'Русский язык'], ['Английский язык', 'Изо']],
+        "tests": ["Математика", "Русский"]
     })
 
 
