@@ -85,6 +85,9 @@ class Colleges(models.Model):
     creation_date = models.DateField(db_column='Creation_date', blank=True, null=True)
     last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
 
+    def __str__(self):
+        return ''.join([word[0] for word in self.college_name.split()]) if self.college_name else ''
+
     class Meta:
         managed = False
         db_table = 'Colleges'
