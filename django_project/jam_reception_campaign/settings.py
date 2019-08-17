@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'jam_reception_campaign.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'data',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'USER': 'jam_user',
+        'PASSWORD': 'jam_password',
+        'HOST': '0.0.0.0',  # 10.6.82.23
+        'PORT': '15432',  # 15432
     }
 }
 
