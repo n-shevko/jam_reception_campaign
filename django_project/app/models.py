@@ -13,3 +13,13 @@ class Applicants(models.Model):
     photo_link = models.ImageField()
     creation_date = models.DateField(auto_now=True)
     last_update_date = models.DateField()
+
+
+class Specialty(models.Model):
+    spec_id = models.IntegerField()
+    spec_name = models.CharField(max_length=50)
+    spec_desc = models.CharField(max_length=250)
+    colledge_id = models.IntegerField()
+    disable_flag = models.CharField(max_length=1)
+    creation_date = models.DateField(auto_now=True)
+    last_update_date = models.DateField()
