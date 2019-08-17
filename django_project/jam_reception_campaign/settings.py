@@ -55,8 +55,7 @@ ROOT_URLCONF = 'jam_reception_campaign.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +68,10 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 WSGI_APPLICATION = 'jam_reception_campaign.wsgi.application'
 
 
@@ -77,12 +80,12 @@ WSGI_APPLICATION = 'jam_reception_campaign.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'data',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'USER': 'jam_user',
+        'PASSWORD': 'jam_password',
+        'HOST': '0.0.0.0',  # 10.6.82.23
+        'PORT': '15432',  # 15432
     }
 }
 
