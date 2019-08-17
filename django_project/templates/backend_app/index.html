@@ -1,40 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'backend_app/base.html' %}
 {% load static %}
-{% block head %}
-    <link rel="stylesheet" href="{% static 'md_bootstrap/css/mdb.css' %}"/>
-    <script src="{% static 'md_bootstrap/js/mdb.js' %}"></script>
-{% endblock %}
 {% block body %}
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark default-color">
-            <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
+            <a class="navbar-brand"
+               href="{% url 'backend_app:index' %}"
+            >
+                <strong>Приёмная кампания</strong>
+                <small>
+                    {% if request.user.college %}
+                        ({{ request.user.college }})
+                    {% endif %}
+                </small>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'backend_app:index' %}">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Поданные документы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Opinions</a>
+                        <a class="nav-link" href="#">Статистика</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav nav-flex-icons">
                     <li class="nav-item">
-                        <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fab fa-instagram"></i></a>
+                        {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'logout' %}">Выйти<i class="fab fa-user-o"></i></a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'login' %}">Войти<i class="fab fa-user-o"></i></a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
