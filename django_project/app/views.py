@@ -8,17 +8,33 @@ def index(request):
 
 
 def new_application(request):
+    education_options = {
+        "Minsk": {
+            "BGU": ["Povar", "Kuharka"],
+            "BGUIR": ["Koder"]
+        },
+        "Gomel": {
+            "BELGUT": ['Sviaz'],
+            "GTEK": ["Proger"]
+        }
+    }
     return render_to_response('app/application_form.html', {
         "title": "Подача заявления",
         "fields": [
-            'Гражданство',
-            'Номер паспорта',
-            'Личный номер',
-            'Дата выдачи',
-            'Фотография'
+            ['Гражданство', 'citizenship'],
+            ['Номер паспорта', 'passport_num'],
+            ['Личный номер', 'personal_id'],
+            ['Дата выдачи', 'passport_exp_date'],
+            ['Фотография', 'photo']
         ],
         "subjects": [['Математика', 'Русский язык'], ['Английский язык', 'Изо']],
-        "tests": ["Математика", "Русский"]
+        "tests": ["Математика", "Русский"],
+        "education_options": education_options,
+        "cheaters": [
+            "Победитель олимпиады",
+            "Сирота",
+            "Спортсмены"
+        ]
     })
 
 
