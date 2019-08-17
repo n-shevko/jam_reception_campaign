@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+ <div class="row">
+     <div class="col-4"></div>
+     <div class="col-4">
+        <div class="list-group">
+          <a href="/new_application" class="list-group-item list-group-item-action active">
+              Подать заявку
+          </a>
+          <a href="/campagin_status" class="list-group-item list-group-item-action">
+              Ход приёмной кампании
+          </a>
+          <a href="/admin" class="list-group-item list-group-item-action">
+              Админы
+          </a>
+        </div>
+     </div>
+     <div class="col-4"></div>
+ </div>
+{% endblock %}
