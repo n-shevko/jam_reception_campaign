@@ -2,6 +2,13 @@ from django.db import models
 
 
 class Applicants(models.Model):
+    MALE = 'M'
+    FEMALE = 'F'
+    SEX = [
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+    ]
+
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -13,6 +20,11 @@ class Applicants(models.Model):
     photo_link = models.ImageField()
     creation_date = models.DateField(auto_now=True)
     last_update_date = models.DateField()
+    sex = models.CharField(
+        max_length=1,
+        choices=SEX,
+        default=FEMALE,
+    )
 
 
 class Colleges(models.Model):
