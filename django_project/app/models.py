@@ -27,10 +27,31 @@ class Colleges(models.Model):
 
 
 class Specialty(models.Model):
-    spec_id = models.IntegerField()
     spec_name = models.CharField(max_length=50)
     spec_desc = models.CharField(max_length=250)
     colledge_id = models.ForeignKey(Colleges, on_delete=models.SET_NULL, null=True)
     disable_flag = models.CharField(max_length=1)
+    creation_date = models.DateField(auto_now=True)
+    last_update_date = models.DateField()
+
+
+class Applications(models.Model):
+    spec = models.ForeignKey(Specialty, on_delete=models.SET_NULL, null=True)
+    applicant = models.ForeignKey(Applicants, on_delete=models.SET_NULL, null=True)
+    free_education_flag = models.CharField(max_length=1)
+    paid_education_flag = models.CharField(max_length=1)
+    full_time_education = models.CharField(max_length=1)
+    part_time_education = models.CharField(max_length=1)
+    after_9_years = models.CharField(max_length=1)
+    after_11_years = models.CharField(max_length=1)
+    certificate_avg = models.FloatField()
+    test_mark_1 = models.IntegerField()
+    test_subject_1 = models.CharField(max_length=50)
+    test_mark_2 = models.IntegerField()
+    test_subject_2 = models.CharField(max_length=50)
+    admitted_flag = models.CharField(max_length=50)
+
+    privilege_type = models.CharField(max_length=50)
+    status = models.CharField(max_length=50)
     creation_date = models.DateField(auto_now=True)
     last_update_date = models.DateField()
