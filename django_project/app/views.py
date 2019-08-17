@@ -1,4 +1,6 @@
 from django.shortcuts import render_to_response
+from django.http import JsonResponse
+from app.models import Applicants
 
 
 def index(request):
@@ -36,6 +38,15 @@ def new_application(request):
             "Спортсмены"
         ]
     })
+
+
+def save_application(request):
+    # deep learing start
+    data = {}
+    for prop in request.GET:
+        data[prop] = request.GET[prop]
+    # deep learning finish
+    return JsonResponse({'status': 'Ok'})
 
 
 def campagin_status(request):
