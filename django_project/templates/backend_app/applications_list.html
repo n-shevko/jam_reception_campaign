@@ -1,6 +1,8 @@
 {% extends 'backend_app/index.html' %}
 {% load render_table from django_tables2 %}
 {% block body %}
-    {{ block.super }}
-    {% render_table table %}
+    <div class="container-fluid">
+        {% include 'backend_app/nav.html' %}
+        {% render_table table %}
+    </div>
 {% endblock %}

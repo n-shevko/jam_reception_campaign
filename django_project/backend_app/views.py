@@ -19,6 +19,9 @@ class ApplicationsView(SingleTableView):
     template_name = 'backend_app/applications_list.html'
     ordering = 'application_id'
 
+    def get_queryset(self):
+        return Applications.objects.filter(spec__colledge=self.request.user.employee.college).order_by('application_id')
+
 
 class ApplicationEditView(UpdateView):
     model = Applications

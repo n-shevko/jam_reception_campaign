@@ -1,9 +1,9 @@
-{% extends 'backend_app/index.html' %}
+{% extends 'backend_app/base.html' %}
 {% load bootstrap4 %}
 
 {% block body %}
-    {{ block.super }}
-    <div class="container">
+    <div class="container-fluid">
+        {% include 'backend_app/nav.html' %}
         <div class="row">
             <div class="col-8 offset-2">
                 <form method="post">

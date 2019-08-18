@@ -2,39 +2,10 @@
 {% load static %}
 {% block body %}
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark default-color">
-            <a class="navbar-brand"
-               href="{% url 'backend_app:index' %}"
-            >
-                <strong>Приёмная кампания</strong>
-                <small>
-                    {% if request.user.college %}
-                        ({{ request.user.college }})
-                    {% endif %}
-                </small>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'backend_app:app_list' %}">Поданные документы</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Статистика</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        {% if user.is_authenticated %}
-                            <a class="nav-link" href="{% url 'logout' %}">Выйти<i class="fab fa-user-o"></i></a>
-                        {% else %}
-                            <a class="nav-link" href="{% url 'login' %}">Войти<i class="fab fa-user-o"></i></a>
-                        {% endif %}
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        {% include 'backend_app/nav.html' %}
+        {% block content %}
+            <img src="{% static 'backend_app/секретарь-01.png' %}" width="1200">
+            <img src="{% static 'backend_app/председатель-01.png' %}" width="1200">
+        {% endblock %}
     </div>
 {% endblock %}
