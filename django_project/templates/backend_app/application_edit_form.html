@@ -1,0 +1,19 @@
+{% extends 'backend_app/index.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+    {{ block.super }}
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form layout='horizontal' %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    {% endbuttons %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -11,14 +11,28 @@
             <div class="col-6 offset-3">
                 <!-- Default form login -->
                 <form class="text-center border border-light p-5" method="post" novalidate>
-
+                    {% csrf_token %}
                     <p class="h4 mb-4">Войти</p>
-
+                    {% if form.errors %}
+                        <p class="text-danger">
+                            Вы ввели неверный логин или пароль
+                        </p>
+                    {% endif %}
                     <!-- Email -->
-                    <input type="email" id="id_username" name="username" class="form-control mb-4" placeholder="E-mail">
+                    <input type="email"
+                           id="id_username"
+                           name="username"
+                           class="form-control validate mb-4"
+                           placeholder="E-mail"
+                    >
 
                     <!-- Password -->
-                    <input type="password" id="id_password" name="password" class="form-control mb-4" placeholder="Пароль">
+                    <input type="password"
+                           id="id_password"
+                           name="password"
+                           class="form-control mb-4"
+                           placeholder="Пароль"
+                    >
 
                     <div class="d-flex justify-content-around">
                         <div>
@@ -26,11 +40,8 @@
                             <a href="">Забыли пароль?</a>
                         </div>
                     </div>
-
-                    <!-- Sign in button -->
                     <button class="btn btn-info btn-block my-4" type="submit">Войти</button>
                 </form>
-                <!-- Default form login -->
             </div>
         </div>
     </div>

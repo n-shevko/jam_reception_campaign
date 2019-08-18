@@ -16,34 +16,29 @@ class Applicants(models.Model):
     creation_date = models.DateField(db_column='Creation_date', blank=True, null=True)
     last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.last_name} {self.first_name} {self.middle_name}'
+
     class Meta:
         managed = False
         db_table = 'Applicants'
 
 
 class Applications(models.Model):
-    application_id = models.IntegerField(primary_key=True)
-    spec = models.ForeignKey('Specialties', models.DO_NOTHING, blank=True, null=True)
-    applicant = models.ForeignKey(Applicants, models.DO_NOTHING, blank=True, null=True)
-    free_education_flag = models.CharField(db_column='Free_education_flag', max_length=1, blank=True, null=True)
-    paid_education_flag = models.CharField(db_column='Paid_education_flag', max_length=1, blank=True, null=True)
-    full_time_education_flag = models.CharField(db_column='Full_time_education_flag', max_length=1, blank=True,
-                                                null=True)
-    part_time_education_flag = models.CharField(db_column='Part_time_education_flag', max_length=1, blank=True,
-                                                null=True)
-    after_9_years_flag = models.CharField(max_length=1, blank=True, null=True)
-    after_11_years_flag = models.CharField(max_length=1, blank=True, null=True)
-    certificate_avg = models.IntegerField(db_column='Certificate_Avg', blank=True, null=True)
-    number_1_test_mark = models.IntegerField(db_column='1_Test_Mark', blank=True, null=True)
-    number_1_test_subject_id = models.IntegerField(db_column='1_Test_Subject_id', blank=True, null=True)
-    number_2_test_mark = models.IntegerField(db_column='2_Test_Mark', blank=True, null=True)
-    number_2_test_subject_id = models.IntegerField(db_column='2_Test_Subject_id', blank=True, null=True)
-    admitted_flag = models.CharField(db_column='Admitted_Flag', max_length=1, blank=True, null=True)
-    privilege = models.ForeignKey('Privileges', models.DO_NOTHING, db_column='Privilege_id', blank=True, null=True)
-    status = models.CharField(db_column='Status', max_length=50, blank=True, null=True)
-    creation_date = models.DateField(db_column='Creation_date', blank=True, null=True)
-    last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
-    disable_flag = models.CharField(db_column='Disable_flag', max_length=1, blank=True, null=True)
+    application_id = models.IntegerField('#', primary_key=True)
+    spec = models.ForeignKey('Specialties', on_delete=models.DO_NOTHING, blank=True, null=True, verbose_name='Специальность')
+    applicant = models.ForeignKey(Applicants, models.DO_NOTHING, blank=True, null=True, verbose_name='Абитуриент')
+    certificate_avg = models.IntegerField(db_column='Certificate_Avg', blank=True, null=True, verbose_name='Средний балл аттестата')
+    number_1_test_mark = models.IntegerField(db_column='1_Test_Mark', blank=True, null=True, verbose_name='Балл по первому предмету')
+    number_1_test_subject_id = models.IntegerField(db_column='1_Test_Subject_id', blank=True, null=True, verbose_name='ID первого предмета')
+    number_2_test_mark = models.IntegerField(db_column='2_Test_Mark', blank=True, null=True, verbose_name='Балл по второму тесту')
+    number_2_test_subject_id = models.IntegerField(db_column='2_Test_Subject_id', blank=True, null=True, verbose_name='ID второго теста')
+    admitted_flag = models.CharField(db_column='Admitted_Flag', max_length=1, blank=True, null=True, verbose_name='Принят')
+    privilege = models.ForeignKey('Privileges', models.DO_NOTHING, db_column='Privilege_id', blank=True, null=True, verbose_name='Льготы')
+    status = models.CharField(db_column='Status', max_length=50, blank=True, null=True, verbose_name='Статус')
+    creation_date = models.DateField(db_column='Creation_date', blank=True, null=True, verbose_name='Дата подачи заявки')
+    last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True, verbose_name='Дата последнего обновления')
+    disable_flag = models.CharField(db_column='Disable_flag', max_length=1, blank=True, null=True, verbose_name='Отклонена')
 
     class Meta:
         managed = False
@@ -145,7 +140,6 @@ class Privileges(models.Model):
     last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'Privileges'
 
 
@@ -157,6 +151,9 @@ class Specialties(models.Model):
     disable_flag = models.CharField(db_column='Disable_flag', max_length=1, blank=True, null=True)
     creation_date = models.DateField(db_column='Creation_date', blank=True, null=True)
     last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.spec_name}'
 
     class Meta:
         managed = False
