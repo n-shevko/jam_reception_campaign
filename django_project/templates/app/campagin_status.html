@@ -1,5 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <script type="application/javascript">
+    $(document).ready(function() {
+        $('#next').click(function () {
+            window.location = 'campagin_results';
+        })
+    })
+    </script>
+{% endblock %}
 
 {% block body %}
-campagin_status
+<img src="{% static 'app/campagin_status.png' %}" style="width: 100%">
+<button class="btn btn-primary" id="next">Next</button>
 {% endblock %}
