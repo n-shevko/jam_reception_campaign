@@ -42,19 +42,6 @@
         })
 
         $('#submit_app').click(function () {
-            {#first_name = models.CharField(db_column='First_Name', max_length=50, blank=True, null=True)#}
-            {#middle_name = models.CharField(db_column='Middle_Name', max_length=50, blank=True, null=True)#}
-            {#last_name = models.CharField(db_column='Last_Name', max_length=50, blank=True, null=True)#}
-            {#sex = models.CharField(db_column='Sex', max_length=1, blank=True, null=True)#}
-            {#date_of_birth = models.DateField(db_column='Date_of_Birth', blank=True, null=True)#}
-            {#citizenship = models.CharField(db_column='Citizenship', max_length=50, blank=True, null=True)#}
-            {#passport_num = models.CharField(db_column='Passport_Num', max_length=50, blank=True, null=True)#}
-            {#personal_id = models.CharField(db_column='Personal_ID', max_length=50, blank=True, null=True)#}
-            {#passport_exp_date = models.DateField(db_column='Passport_exp_date', blank=True, null=True)#}
-            {#photo_link = models.CharField(db_column='Photo_link', max_length=240, blank=True, null=True)#}
-            {#creation_date = models.DateField(db_column='Creation_date', blank=True, null=True)#}
-            {#last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)#}
-
             data = {
                 last_name: $('#last_name').val(),
                 middle_name: $('#middle_name').val(),
@@ -62,16 +49,15 @@
                 date_of_birth: $('#birthday').val(),
                 citizenship: $('#citizenship').val(),
                 passport_num: $('#passport_num').val(),
-                personal_id: $('#personal_id').val(),
-
+                personal_id: $('#personal_id').val()
             }
 
             $.ajax({
               method: "GET",
               url: "save_application",
               data: data
-            }).done(function( msg ) {
-                alert("Data Saved: " + msg.status);
+            }).done(function(msg) {
+                window.location = msg.next_url;
             });
         })
     });

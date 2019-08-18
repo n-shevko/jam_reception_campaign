@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from app.models import Applicants
-
 
 def index(request):
     return render_to_response('app/index.html', {
@@ -41,15 +40,20 @@ def new_application(request):
 
 
 def save_application(request):
-    # deep learing start
     data = {}
-    for prop in request.GET:
-        data[prop] = request.GET[prop]
-    # deep learning finish
-    return JsonResponse({'status': 'Ok'})
+    for prop, val in request.GET.items():
+        data[prop] = val
+    #Applicants(**data).save()
+    return JsonResponse({'next_url': 'campagin_status'})
 
 
 def campagin_status(request):
     return render_to_response('app/campagin_status.html', {
         "title": "Статус приёмной кампании"
+    })
+
+
+def campagin_results(request):
+    return render_to_response('app/campagin_results.html', {
+        "title": "Результаты приёмной кампании"
     })
