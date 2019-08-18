@@ -17,7 +17,7 @@ class Applicants(models.Model):
     last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name} {self.middle_name}'
+        return '%s %s %s' % (self.last_name, self.first_name, self.middle_name)
 
     class Meta:
         managed = False
@@ -153,7 +153,7 @@ class Specialties(models.Model):
     last_update_date = models.DateField(db_column='Last_update_date', blank=True, null=True)
 
     def __str__(self):
-        return f'{self.spec_name}'
+        return self.spec_name
 
     class Meta:
         managed = False

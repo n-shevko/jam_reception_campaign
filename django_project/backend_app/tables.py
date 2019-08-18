@@ -7,7 +7,7 @@ from app.models import Applications
 class ApplicationsTable(tables.Table):
 
     def render_application_id(self, value):
-        return mark_safe(f'<a href="/back/app_edit/{value}">{value}</a>')
+        return mark_safe('<a href="/back/app_edit/%s">%s</a>' % (value, value))
 
     class Meta:
         model = Applications
