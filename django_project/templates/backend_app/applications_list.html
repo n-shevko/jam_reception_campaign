@@ -3,6 +3,11 @@
 {% block body %}
     <div class="container-fluid">
         {% include 'backend_app/nav.html' %}
+        <div class="row">
+            <div class="col-3">
+                <a class="btn btn-md btn-blue" href="{% url 'backend_app:update_app_status' %}">Обновить статус заявок</a>
+            </div>
+        </div>
         {% render_table table %}
     </div>
 {% endblock %}

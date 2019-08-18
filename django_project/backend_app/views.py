@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView
 
@@ -28,4 +29,11 @@ class ApplicationEditView(UpdateView):
     form_class = ApplicationEditForm
     template_name = 'backend_app/application_edit_form.html'
     success_url = reverse_lazy('backend_app:app_list')
+
+
+def update_application_status(request):
+    applications_ids = Applications.objects.filter(status='In Progress').values_list('application_id', flat=True)[:5]
+    Applications.objects.filter(application_id__in=applications_ids).update(status='Approved')
+    return redirect('backend_app:app_list')
+
 
